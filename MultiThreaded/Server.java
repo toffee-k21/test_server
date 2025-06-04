@@ -25,9 +25,10 @@ public class Server {
         Server server = new Server();
         int port = 8010;
         ServerSocket serverSocket = new ServerSocket(port);
-        serverSocket.setSoTimeout(10000);
+        serverSocket.setSoTimeout(100000);
         try {
             while (true) { 
+                System.out.println("Server is listening to port" + port);
                 Socket acceptedSocket = serverSocket.accept();
                 Thread thread = new Thread(()->server.getConsumer().accept(acceptedSocket));
                 thread.start();
